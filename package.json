@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "license": "MIT",
-  "name": "create-index-ts",
+  "name": "generate-index-file",
   "author": "Giancarlos Isasi",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -13,7 +13,7 @@
     "node": ">=12"
   },
   "bin": {
-    "create-index-ts": "./dist/index.js"
+    "generate-index-file": "./dist/index.js"
   },
   "scripts": {
     "start": "tsdx watch",
@@ -36,14 +36,14 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "module": "dist/create-index-ts.esm.js",
+  "module": "dist/generate-index-file.esm.js",
   "size-limit": [
     {
-      "path": "dist/create-index-ts.cjs.production.min.js",
+      "path": "dist/generate-index-file.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/create-index-ts.esm.js",
+      "path": "dist/generate-index-file.esm.js",
       "limit": "10 KB"
     }
   ],

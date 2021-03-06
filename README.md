@@ -1,4 +1,4 @@
-# create-index-ts
+# generate-index-file
 
 Automatic creation of index.ts file with export-values from a list of files or folders
 
@@ -35,24 +35,24 @@ export { default as c } from './c';
 ### Install
 npm:
 ```bash
-npm install create-index-ts
+npm install generate-index-file
 ```
 Yarn
 ```bash
-yarn add create-index-ts
+yarn add generate-index-file
 ```
 ### Usage
 npm
 ```bash
-npx create-index-ts ./
-npx create-index-ts ./src --from=folders
-npx create-index-ts ./icons --from=filers
+npx generate-index-file ./
+npx generate-index-file ./src --from=folders
+npx generate-index-file ./icons --from=filers
 ```
 yarn
 ```bash
-yarn create-index-ts ./
-yarn create-index-ts ./src --from=folders
-yarn create-index-ts ./icons --from=filers
+yarn generate-index-file ./
+yarn generate-index-file ./src --from=folders
+yarn generate-index-file ./icons --from=filers
 ```
 
 
