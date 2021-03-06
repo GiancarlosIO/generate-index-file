@@ -1,11 +1,7 @@
 import fs from 'fs';
-import path from 'path'
+import path from 'path';
 
-import {
-  getFileList,
-  isDirectory,
-  folderIncludesIndexFile,
-} from './utils'
+import { getFileList, isDirectory, folderIncludesIndexFile } from './utils';
 
 export function generateIndexFromFolders(srcFolder: string): string {
   const fileList = getFileList(srcFolder);
@@ -17,15 +13,15 @@ export function generateIndexFromFolders(srcFolder: string): string {
   const indexContentArr = folders.map((folderPath: string) => {
     const files = fs.readdirSync(folderPath);
 
-    const currentFolder = path.basename(folderPath)
+    const currentFolder = path.basename(folderPath);
     // the folder can have an index.ts or an index.tsx
     const hasIndexWithTsExtension = files.includes('index.ts');
     const fileContent = fs.readFileSync(
       path.join(
         srcFolder,
-        `${currentFolder}/index.${hasIndexWithTsExtension ? 'ts' : 'tsx'}`,
+        `${currentFolder}/index.${hasIndexWithTsExtension ? 'ts' : 'tsx'}`
       ),
-      'utf8',
+      'utf8'
     );
 
     const hasExportDefault = fileContent.includes('export { default } from');
@@ -38,4 +34,4 @@ export function generateIndexFromFolders(srcFolder: string): string {
   return indexContentArr.join('');
 }
 
-export default generateIndexFromFolders
+export default generateIndexFromFolders;

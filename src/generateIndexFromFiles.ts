@@ -1,9 +1,6 @@
 import path from 'path';
 
-import {
-  getFileList,
-  isFile,
-} from './utils'
+import { getFileList, isFile } from './utils';
 
 function generateIndexFromFiles(srcFolder: string): string {
   const fileList = getFileList(srcFolder);
@@ -12,11 +9,11 @@ function generateIndexFromFiles(srcFolder: string): string {
     .filter(isFile)
     .filter(filepath => {
       const filename = path.basename(filepath);
-      return filename !== 'index.ts' && filename !== 'index.tsx'
+      return filename !== 'index.ts' && filename !== 'index.tsx';
     });
 
   const indexContentArr = files.map((filePath: string) => {
-    const filename = path.basename(filePath)
+    const filename = path.basename(filePath);
     const isTsxExtension = filename.includes('.tsx');
     const name = filename.split(isTsxExtension ? '.tsx' : '.ts')[0];
 
@@ -26,4 +23,4 @@ function generateIndexFromFiles(srcFolder: string): string {
   return indexContentArr.join('');
 }
 
-export default generateIndexFromFiles
+export default generateIndexFromFiles;
