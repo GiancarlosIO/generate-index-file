@@ -3,3 +3,4 @@
 node_modules
 dist
 .npmrc
+test/package-test/index.ts
