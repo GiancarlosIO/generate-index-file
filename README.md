@@ -52,7 +52,7 @@ yarn
 ```bash
 yarn generate-index-file ./
 yarn generate-index-file ./src --from=folders
-yarn generate-index-file ./icons --from=filers
+yarn generate-index-file ./icons --from=files
 ```
 
 
