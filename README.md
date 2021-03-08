@@ -44,14 +44,20 @@ yarn add generate-index-file
 ### Usage
 npm
 ```bash
-npx generate-index-file ./
+// to build based on all files and folders
+npx generate-index-file ./src
+// only based on folders
 npx generate-index-file ./src --from=folders
+// only based on files
 npx generate-index-file ./icons --from=filers
 ```
 yarn
 ```bash
-yarn generate-index-file ./
+// to build based on all files and folders
+yarn generate-index-file ./src
+// only based on folders
 yarn generate-index-file ./src --from=folders
+// only based on files
 yarn generate-index-file ./icons --from=files
 ```
 
@@ -61,5 +67,5 @@ yarn generate-index-file ./icons --from=files
 ```
   --help
   --version  Show the version package
-  --from     Specify if you want to use folders or files to generate the index file. Default to folders
+  --from     Specify if you want to use folders or files to generate the index file.
 ```
