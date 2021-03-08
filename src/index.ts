@@ -15,19 +15,27 @@ export function runCli() {
   const argv = yargs(process.argv.slice(2)).option('from', {
     alias: 'from',
     demandOption: false,
-    default: 'folder',
+    default: '',
     describe:
       'specify if you want to use folders or files to generate the index file.',
     type: 'string',
-    choices: ['files', 'folders'],
+    choices: ['files', 'folders', ''],
+    requiresArg: false,
   }).argv;
   const folder = (argv._[0] as string) || './';
   const sourceFolder = path.join(process.cwd(), folder);
-  const fromFiles = argv.from === 'files';
 
-  const indexContentFile = fromFiles
-    ? generateIndexFromFiles(sourceFolder)
-    : generateIndexFromFolders(sourceFolder);
+  let indexContentFile = '';
+  if (!argv.from) {
+    const foldersExports = generateIndexFromFolders(sourceFolder);
+    const filesExports = generateIndexFromFiles(sourceFolder);
+    indexContentFile = `${foldersExports}\n${filesExports}`;
+  } else {
+    const fromFiles = argv.from === 'files';
+    indexContentFile = fromFiles
+      ? generateIndexFromFiles(sourceFolder)
+      : generateIndexFromFolders(sourceFolder);
+  }
 
   fs.writeFile(path.join(sourceFolder, 'index.ts'), indexContentFile, err => {
     if (err) {
