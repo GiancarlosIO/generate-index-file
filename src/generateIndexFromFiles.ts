@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 
 import { getFileList, isFile } from './utils';
 
@@ -17,7 +18,13 @@ function generateIndexFromFiles(srcFolder: string): string {
     const isTsxExtension = filename.includes('.tsx');
     const name = filename.split(isTsxExtension ? '.tsx' : '.ts')[0];
 
-    return `export { default as ${name} } from './${name}';\n`;
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+
+    const hasExportDefault = fileContent.includes('export default');
+
+    return hasExportDefault
+      ? `export { default as ${name} } from './${name}';\n`
+      : `export * as ${name} from './${name}';\n`;
   });
 
   return indexContentArr.join('');

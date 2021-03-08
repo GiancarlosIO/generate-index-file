@@ -32,9 +32,9 @@ export * as c from './c';
     const given = generateIndexFromFiles(
       path.join(__dirname, './package-test')
     );
-    const result = `export { default as a } from './a';
-export { default as b } from './b';
-export { default as c } from './c';
+    const result = `export * as d from './d';
+export { default as e } from './e';
+export { default as f } from './f';
 `;
     expect(given).toEqual(result);
   });
