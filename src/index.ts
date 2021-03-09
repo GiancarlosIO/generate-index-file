@@ -12,15 +12,12 @@ export const generateIndexFromFiles = generateFromFile;
 export const generateIndexFromFolders = generateFromFolder;
 
 export function runCli() {
-  const argv = yargs(process.argv.slice(2)).option('from', {
+  const argv = yargs(process.argv.slice(2)).option('f', {
     alias: 'from',
-    demandOption: false,
-    default: '',
     describe:
       'specify if you want to use folders or files to generate the index file.',
     type: 'string',
-    choices: ['files', 'folders', ''],
-    requiresArg: false,
+    choices: ['files', 'folders'],
   }).argv;
   const folder = (argv._[0] as string) || './';
   const sourceFolder = path.join(process.cwd(), folder);
